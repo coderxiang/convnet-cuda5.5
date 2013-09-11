@@ -26,7 +26,7 @@ export PYTHON_INCLUDE_PATH=/usr/include/python2.7
 export NUMPY_INCLUDE_PATH=/usr/lib/python2.7/dist-packages/numpy/core/include/numpy/
 
 # ATLAS library directory. This should contain the file libcblas.so, among others.
-export ATLAS_LIB_PATH=/usr/lib/atlas-base
+export ATLAS_LIB_PATH=/usr/
 
 make $*
 
