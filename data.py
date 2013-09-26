@@ -25,6 +25,8 @@
 import numpy as n
 from numpy.random import randn, rand, random_integers
 import os
+import sys
+
 from util import *
 
 BATCH_META_FILE = "batches.meta"
@@ -32,11 +34,20 @@ BATCH_META_FILE = "batches.meta"
 class DataProvider:
     BATCH_REGEX = re.compile('^data_batch_(\d+)(\.\d+)?$')
     def __init__(self, data_dir, batch_range=None, init_epoch=1, init_batchnum=None, dp_params={}, test=False):
-        if batch_range == None:
+        
+        print batch_range, init_batchnum
+        print data_dir
+        
+        sys.exit()
+        
+        if batch_range is None:
             batch_range = DataProvider.get_batch_nums(data_dir)
+            print 'never comes here'
         if init_batchnum is None or init_batchnum not in batch_range:
             init_batchnum = batch_range[0]
 
+        
+        
         self.data_dir = data_dir
         self.batch_range = batch_range
         self.curr_epoch = init_epoch
@@ -66,6 +77,7 @@ class DataProvider:
     def _join_batches(self, main_batch, sub_batch):
         main_batch['data'] = n.r_[main_batch['data'], sub_batch['data']]
         
+    # RETURN unpickled data    
     def get_batch(self, batch_num):
         if os.path.exists(self.get_data_file_name(batch_num) + '.1'): # batch in sub-batches
             dic = unpickle(self.get_data_file_name(batch_num) + '.1')

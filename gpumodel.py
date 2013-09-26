@@ -71,11 +71,11 @@ class IGPUModel:
             self.model_state["test_outputs"] = []
             self.model_state["epoch"] = 1
             self.model_state["batchnum"] = self.train_batch_range[0]
-
+        
         self.init_data_providers()
         if load_dic: 
             self.train_data_provider.advance_batch()
-            
+    
         # model state often requries knowledge of data provider, so it's initialized after
         try:
             self.init_model_state()
@@ -85,6 +85,7 @@ class IGPUModel:
         for var, val in self.model_state.iteritems():
             setattr(self, var, val)
             
+        
         self.import_model()
         self.init_model_lib()
         

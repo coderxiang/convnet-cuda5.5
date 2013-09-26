@@ -40,7 +40,7 @@ class ConvNet(IGPUModel):
         filename_options = []
         dp_params['multiview_test'] = op.get_value('multiview_test')
         dp_params['crop_border'] = op.get_value('crop_border')
-        IGPUModel.__init__(self, "ConvNet", op, load_dic, filename_options, dp_params=dp_params)
+        IGPUModel.__init__(self, "ShuoConvNet", op, load_dic, filename_options, dp_params=dp_params)
         
     def import_model(self):
         lib_name = "pyconvnet" if is_windows_machine() else "_ConvNet"
@@ -172,6 +172,7 @@ class ConvNet(IGPUModel):
     @classmethod
     def get_options_parser(cls):
         op = IGPUModel.get_options_parser()
+        
         op.add_option("mini", "minibatch_size", IntegerOptionParser, "Minibatch size", default=128)
         op.add_option("layer-def", "layer_def", StringOptionParser, "Layer definition file", set_once=True)
         op.add_option("layer-params", "layer_params", StringOptionParser, "Layer parameter file")
