@@ -90,7 +90,7 @@ class IGPUModel:
         self.init_model_lib()
         
     def import_model(self):
-        print "========================="
+        print "=========================**"
         print "Importing %s C++ module" % ('_' + self.model_name)
         self.libmodel = __import__('_' + self.model_name) 
                    

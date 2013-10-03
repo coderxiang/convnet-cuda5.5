@@ -35,18 +35,12 @@ class DataProvider:
     BATCH_REGEX = re.compile('^data_batch_(\d+)(\.\d+)?$')
     def __init__(self, data_dir, batch_range=None, init_epoch=1, init_batchnum=None, dp_params={}, test=False):
         
-        print batch_range, init_batchnum
-        print data_dir
-        
-        sys.exit()
-        
         if batch_range is None:
             batch_range = DataProvider.get_batch_nums(data_dir)
             print 'never comes here'
         if init_batchnum is None or init_batchnum not in batch_range:
             init_batchnum = batch_range[0]
 
-        
         
         self.data_dir = data_dir
         self.batch_range = batch_range
