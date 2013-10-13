@@ -1,4 +1,4 @@
-MODELNAME := _ConvNet
+MODELNAME := _ConvNetV2
 
 INCLUDES := -DCUDA_5 -I$(PYTHON_INCLUDE_PATH) -I$(NUMPY_INCLUDE_PATH) -I$(CUDA_SDK_PATH) -I./include -I./include/common -I./include/cudaconv2 -I./include/nvmatrix -I./dummyinclude/
 

@@ -40,11 +40,11 @@ class ConvNet(IGPUModel):
         filename_options = []
         dp_params['multiview_test'] = op.get_value('multiview_test')
         dp_params['crop_border'] = op.get_value('crop_border')
-        IGPUModel.__init__(self, "ShuoConvNet", op, load_dic, filename_options, dp_params=dp_params)
+        IGPUModel.__init__(self, "ConvNetV2", op, load_dic, filename_options, dp_params=dp_params)
         
     def import_model(self):
-        lib_name = "pyconvnet" if is_windows_machine() else "_ConvNet"
-        print "========================="
+        lib_name = "pyconvnet" if is_windows_machine() else "_ConvNetV2"
+        print "============ConvNet instance================="
         print "Importing %s C++ module" % lib_name
         self.libmodel = __import__(lib_name) 
         
